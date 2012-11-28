@@ -20,7 +20,7 @@ module CloudEncryptedSyncBaselineAdapter
         adapter.parse_command_line_options(parser)
       end
       @option_parser.parse!
-      assert_equal('bar',CloudEncryptedSync::Adapters::Baseline.instance.send(:foo))
+      assert_equal('bar',adapter.send(:foo))
       stub_configuration #just so that teardown unstub doesn't throw errors
     end
 
@@ -60,7 +60,7 @@ module CloudEncryptedSyncBaselineAdapter
     #######
 
     def adapter
-      CloudEncryptedSync::Adapters::Baseline
+      CloudEncryptedSync::Adapters::Baseline.instance
     end
 
     # Setup test configuration values here as if they were passed in as command line arguments
