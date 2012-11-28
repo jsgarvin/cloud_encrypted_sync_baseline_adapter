@@ -36,14 +36,14 @@ module CloudEncryptedSyncBaselineAdapter
 
       assert !adapter.key_exists?(test_key)
 
-      assert_difference('adapter.instance.number_of_files_in_destination') do
+      assert_difference('adapter.number_of_files_in_destination') do
         adapter.write(test_data,test_key)
       end
       assert adapter.key_exists?(test_key)
 
       assert_equal(test_data,adapter.read(test_key))
 
-      assert_difference('adapter.instance.number_of_files_in_destination',-1) do
+      assert_difference('adapter.number_of_files_in_destination',-1) do
         adapter.delete(test_key)
       end
       assert !adapter.key_exists?(test_key)
